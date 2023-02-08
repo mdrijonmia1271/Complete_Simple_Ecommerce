@@ -5,7 +5,7 @@
 $pdo = new PDO('mysql:host=localhost;port=3306;dbname=simple_ecommerce','root','');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$statement = $pdo->prepare('SELECT * FROM deash_board ORDER BY id DESC');
+$statement = $pdo->prepare('SELECT * FROM deash_board ORDER BY id ');
 $statement->execute();
 $products = $statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -130,7 +130,7 @@ $products = $statement->fetchAll(PDO::FETCH_ASSOC);
                         <?php
                         foreach ($products as $i => $product): ?>
                             <tr>
-                                <th scope="row"><?php echo $i+1 ?></th>
+                                <th scope="row"><?php echo $product['id'] ?></th>
                                 <td><?php echo $product ['admin_name'] ?></td>
                               
                                 <td><?php
@@ -186,6 +186,7 @@ $products = $statement->fetchAll(PDO::FETCH_ASSOC);
                                        <input type="hidden" name="id" value="<?php echo $product['id'] ?>">
                                        <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
                                    </form>
+                                   <a href="barcode.php?id=<?php echo $product['id'] ?>" type="button" class="btn btn-sm btn-outline-primary">Brdcode</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

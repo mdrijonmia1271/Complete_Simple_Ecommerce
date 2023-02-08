@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
   $quantity = $_POST['quantity'];
   $description = $_POST['description'];
   $status = isset($_POST['status']) && $_POST['status']  ? "1" : "0";
-  $date = date('Y-m-d H:i:s');
+  $date = date('Y-m-d');
 
   if(empty($category_name_id)){
     $emtCateName = 'Fill Up this field';
